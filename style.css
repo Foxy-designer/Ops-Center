@@ -5,6 +5,7 @@
 }
 
 body {
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   background-color: #e8e9f3;
   color: #000;
@@ -293,16 +294,20 @@ input {
 
 .requests-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   padding: 0 16px;
   margin-bottom: 32px;
 }
 
 .requests-header-left {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 40px;
+  min-width: 0;
 }
 
 .requests-header h2 {
@@ -339,10 +344,17 @@ input {
   border-radius: 60px;
   font-size: 16px;
   color: #323131;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.table-scroll {
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
+  min-width: 640px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -383,8 +395,9 @@ td:last-child {
   text-align: center;
 }
 
-tbody tr:first-child td {
-  padding-top: 50px;
+.spacer td {
+  height: 36px;
+  padding: 0;
 }
 
 tbody tr:last-child td {
@@ -502,6 +515,7 @@ tbody tr.highlight {
 .user-message {
   align-self: flex-end;
   max-width: 260px;
+  overflow-wrap: anywhere;
   padding: 8px 12px;
   background-color: rgba(42, 19, 161, 0.7);
   border-radius: 16px;
@@ -565,6 +579,7 @@ tbody tr.highlight {
 
 .ai-message {
   padding: 0 6px 0 5px;
+  overflow-wrap: anywhere;
 }
 
 .ai-message h3 {
@@ -730,6 +745,20 @@ tbody tr.highlight {
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .profile > div {
+    display: none;
+  }
+
+  .requests-header-left {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .search-box.small {
+    flex: 1 1 200px;
+    min-width: 200px;
+  }
 }
 
 /* ===== Mobile ===== */
@@ -860,25 +889,33 @@ tbody tr.highlight {
     margin-top: 35px;
   }
 
-  .table-scroll {
-    overflow-x: auto;
-  }
-
-  .requests-header,
   table {
     width: 637px;
   }
 
+  /* heading on one line, search and sort under it */
+  .requests-header {
+    gap: 12px;
+  }
+
   .requests-header-left {
-    gap: 24px;
+    display: contents;
   }
 
   .requests-header h2 {
-    font-size: 14px;
+    flex: 1 1 100%;
+    font-size: 16px;
   }
 
   .search-box.small {
-    flex: 0 0 184px;
+    flex: 1;
+    min-width: 0;
+    padding: 0 16px;
+  }
+
+  .sort-btn {
+    width: auto;
+    padding: 0 8px 0 16px;
   }
 
   .search-box.small input,
@@ -933,5 +970,33 @@ tbody tr.highlight {
 
   .chat-bottom {
     padding: 0 21px 32px;
+  }
+}
+
+/* ===== Small phones ===== */
+
+@media (max-width: 380px) {
+  .container,
+  .chat-open .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .topbar {
+    gap: 16px;
+  }
+
+  .ask-ai-btn {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .stats {
+    gap: 16px;
+  }
+
+  .stat-card,
+  .chat-open .stat-card {
+    padding: 16px 10px;
   }
 }
