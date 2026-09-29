@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@3.0.3/dist/iconify-icon.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <ul>
+        <li>
+          <a href="#" class="active">
+            <span class="icon-circle"><iconify-icon icon="material-symbols-light:dashboard" width="24" height="24"></iconify-icon></span>
+            Dashboard
+          </a>
+        </li>
+        <li class="mobile-only">
+          <a href="#"><iconify-icon icon="iconamoon:profile" width="20" height="20"></iconify-icon> My Profile</a>
+        </li>
+        <li>
+          <a href="#"><iconify-icon icon="dashicons:text-page" width="20" height="20"></iconify-icon> Requests</a>
+        </li>
+        <li>
+          <a href="#"><iconify-icon icon="ic:baseline-ac-unit" width="24" height="24"></iconify-icon> Work Orders</a>
+        </li>
+        <li>
+          <a href="#"><iconify-icon icon="mdi:location" width="24" height="24"></iconify-icon> Locations</a>
+        </li>
+        <li>
+          <a href="#"><iconify-icon icon="boxicons:file-report" width="24" height="24"></iconify-icon> Reports</a>
+        </li>
+        <li>
+          <a href="#"><iconify-icon icon="basil:settings-solid" width="24" height="24"></iconify-icon> Settings</a>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="#"><iconify-icon icon="bxs:help-circle" width="24" height="24"></iconify-icon> Help &amp; Support</a>
+        </li>
+        <li>
+          <a href="#"><iconify-icon icon="grommet-icons:logout" width="24" height="24"></iconify-icon> Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Dashboard -->
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <iconify-icon icon="ant-design:menu-outlined" width="24" height="24"></iconify-icon>
+        </button>
+
+        <div class="search-box">
+          <iconify-icon icon="ant-design:search-outlined" width="24" height="24"></iconify-icon>
+          <input type="text" class="search-input" placeholder="Search request">
+        </div>
+
+        <div class="topbar-right">
+          <div class="notification">
+            <iconify-icon icon="basil:notification-solid" width="40" height="40"></iconify-icon>
+            <span class="badge">2</span>
+          </div>
+
+          <div class="profile">
+            <img src="avatar.jpg" alt="Praise Adewale">
+            <div>
+              <p class="profile-name">Praise Adewale</p>
+              <p class="profile-role">
+                Manager
+                <span class="caret-box"><iconify-icon icon="basil:caret-down-outline" width="24" height="24"></iconify-icon></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="welcome">
+        <h1>Welcome back, <br class="mobile-break">Fiyinfoluwa</h1>
+        <button class="ask-ai-btn" id="askAiBtn">
+          <img src="sparkle.svg" alt="">
+          ASK AI
+        </button>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <p class="stat-title">Open Requests</p>
+          <p class="stat-number">24</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Awaiting Technician</p>
+          <p class="stat-number">5</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">In Progress</p>
+          <p class="stat-number">8</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Completed Today</p>
+          <p class="stat-number">18</p>
+        </div>
+      </div>
+
+      <div class="requests-card">
+        <div class="table-scroll">
+          <div class="requests-header">
+            <div class="requests-header-left">
+              <h2>Requests for Today</h2>
+              <div class="search-box small">
+                <iconify-icon icon="ant-design:search-outlined" width="24" height="24"></iconify-icon>
+                <input type="text" class="search-input" placeholder="Search request">
+              </div>
+            </div>
+            <button class="sort-btn" id="sortBtn">
+              Sort by
+              <iconify-icon icon="basil:caret-down-outline" width="36" height="36"></iconify-icon>
+            </button>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Request</th>
+                <th>Issue</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Assigned to</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr id="MR-2841">
+                <td><span class="request-id">#MR-2841</span>5 mins ago</td>
+                <td>AC not working</td>
+                <td>Pater Office -<br>4th Floor</td>
+                <td><span class="status awaiting">Awaiting<br>Technician</span></td>
+                <td>Mary David</td>
+              </tr>
+              <tr id="MR-2839">
+                <td><span class="request-id">#MR-2839</span>12 mins ago</td>
+                <td>Water Leakage</td>
+                <td>Crunch Office -<br>3rd Floor</td>
+                <td><span class="status in-progress">In Progress</span></td>
+                <td>Bose Adeleke</td>
+              </tr>
+              <tr id="MR-2837">
+                <td><span class="request-id">#MR-2837</span>35 mins ago</td>
+                <td>Elevator<br>Inspection</td>
+                <td>Crunch Office -<br>1st Floor</td>
+                <td><span class="status in-progress">In Progress</span></td>
+                <td>James Cole</td>
+              </tr>
+              <tr id="MR-2834">
+                <td><span class="request-id">#MR-2834</span>1 hour ago</td>
+                <td>Ceiling tile<br>damage</td>
+                <td>Central Office -<br>3rd Floor</td>
+                <td><span class="status completed">Completed</span></td>
+                <td>Chioma Lawal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- AI chat panel -->
+    <aside class="chat-panel">
+      <div class="chat-inner">
+        <div class="chat-header">
+          <div class="chat-title">
+            NEW AI CHAT
+            <button id="newChatBtn" aria-label="New chat">
+              <iconify-icon icon="basil:caret-down-outline" width="36" height="36"></iconify-icon>
+            </button>
+          </div>
+          <button class="close-btn" id="closeChatBtn" aria-label="Close chat">
+            <iconify-icon icon="icomoon-free:cancel-circle" width="28" height="28"></iconify-icon>
+          </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="welcome-text" id="welcomeText">
+            Welcome Fiyinfoluwa,
+            <span>How can I help you today?</span>
+          </div>
+        </div>
+
+        <div class="chat-bottom">
+          <div class="suggestions">
+            <button class="suggestion">
+              <iconify-icon icon="ant-design:search-outlined" width="24" height="24"></iconify-icon>
+              Which request needs attention?
+            </button>
+            <button class="suggestion">
+              <iconify-icon icon="ant-design:search-outlined" width="24" height="24"></iconify-icon>
+              Summarize today's requests
+            </button>
+            <button class="suggestion">
+              <iconify-icon icon="ant-design:search-outlined" width="24" height="24"></iconify-icon>
+              What changed today?
+            </button>
+          </div>
+
+          <form class="chat-form" id="chatForm">
+            <input type="text" id="chatInput" placeholder="Ask about your requests">
+            <button type="submit" class="send-btn" aria-label="Send">
+              <iconify-icon icon="boxicons:send-filled" width="32" height="32"></iconify-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
